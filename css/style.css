@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    background-color: rgb(71, 58, 58);
+}
+
+header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    margin-top: 50px;
+    padding-bottom: 15px;
+    width: 40vh;
+    font-size: 45px;
+    font-family: 'Kanit', 'monospace';
+    text-align: center;
+    color: white;
+    border-bottom: 3px solid rgb(151, 151, 240);
+}
+
+body {
+    border: 1px solid black;
+}
