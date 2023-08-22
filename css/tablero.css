@@ -46,7 +46,7 @@ main div {
 
 #tablero {
     width: 100%;
-    height: 55vh;
+    height: 53vh;
     display: grid;
     grid-template-columns: repeat(3, 140px);
 }
