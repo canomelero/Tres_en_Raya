@@ -2,8 +2,14 @@
     padding: 0;
     margin: 0;
     text-decoration: none;
-    background-color: rgb(71, 58, 58);
     font-family: 'Kanit', 'monospace';
+}
+
+body {
+    background-image: url('../fondo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;         /*Para que la imagen cubra todos los espacios en blanco del body*/
+    background-attachment: fixed;   /*Para no deformar las dimensiones de la imagen*/
 }
 
 header {
@@ -22,6 +28,7 @@ header h1 {
     text-align: center;
     color: white;
     border-bottom: 3px solid rgb(151, 151, 240);
+    background: none;
 }
 
 main {
@@ -38,6 +45,7 @@ main {
     justify-content: center;
     align-items: center;
     width: 30%;
+    background: none;
 }
 
 #botones :nth-child(1) {
@@ -62,5 +70,5 @@ main {
 }
 
 .boton:hover {
-    box-shadow: 0px 0px 5px black;
+    box-shadow: 0px 0px 3px white;
 }
