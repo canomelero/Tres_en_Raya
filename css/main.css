@@ -46,7 +46,7 @@ main .contenedor {
     justify-content: space-between;
     align-items: center;
     width: auto;
-    margin: 70px 10px 10px 10px;
+    margin-top: 70px;
 }
 
 .juego {
@@ -63,13 +63,12 @@ main .contenedor {
     width: auto;
     height: 50vh;
     display: grid;
-    grid-template-columns: repeat(3, 135px);
+    grid-template-columns: repeat(3, 125px);
     gap: 8px;
 }
 
 .casilla {
     border: 1px solid white;
-    width: auto;
     border-radius: 5px;
     background-color: rgb(71, 58, 58);
 }
@@ -104,13 +103,12 @@ main .contenedor {
 .boton {
     color: white;
     border: 2px solid black;
-    width: auto;
+    width: 184.5px;
     text-align: center;
     padding: 5px;
     border-radius: 5px;
     font-size: 20px;
     background-color: rgb(151, 151, 240);
-    width: auto;
 }
 
 .boton:hover {
@@ -118,6 +116,16 @@ main .contenedor {
     cursor: pointer;
 }
 
-
+.alerta {
+    color: white;
+    border: 2px solid black;
+    width: 170px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 30px;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: rgb(243, 42, 42);
+}
 
 
