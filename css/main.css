@@ -36,7 +36,47 @@ main {
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    height: 60vh;
+    height: auto;
+    width: 100%;
+}
+
+main .contenedor {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    margin: 70px 10px 10px 10px;
+}
+
+.juego {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px 20px 0px;
+}
+
+#tablero {
+    width: auto;
+    height: 50vh;
+    display: grid;
+    grid-template-columns: repeat(3, 135px);
+    gap: 8px;
+}
+
+.casilla {
+    border: 1px solid white;
+    width: auto;
+    border-radius: 5px;
+    background-color: rgb(71, 58, 58);
+}
+
+.casilla:hover {
+    cursor: pointer;
+    box-shadow: inset 0px 0px 5px white;
 }
 
 #botones {
@@ -44,18 +84,22 @@ main {
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: auto;
+    height: auto;
     background: none;
+    margin-right: 200px;
 }
 
 #botones :nth-child(1) {
-    padding: 3px 52.5px 3px 52.5px;
+    margin-bottom: 40px;
+    padding-left: 42px;
+    padding-right: 42px;
 }
 
 #botones :nth-child(2) {
-    padding: 3px 40px 3px 40px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
-
 
 .boton {
     color: white;
@@ -63,12 +107,17 @@ main {
     width: auto;
     text-align: center;
     padding: 5px;
-    margin-bottom: 40px;
     border-radius: 5px;
     font-size: 20px;
     background-color: rgb(151, 151, 240);
+    width: auto;
 }
 
 .boton:hover {
     box-shadow: 0px 0px 3px white;
+    cursor: pointer;
 }
+
+
+
+
