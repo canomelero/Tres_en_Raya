@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // #### Variables ####
     const boton1 = document.querySelector('#un_jugador');
     const boton2 = document.querySelector('#dos_jugadores');
-    const div_botones = document.querySelector('#botones');
+    const div_botones = document.querySelector('.botones');
     const tablero = new Tablero();
     const marca_x = "X";
     const marca_o = "O";
@@ -33,26 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log(tablero);
 
-
+        rellenarArray();
+        console.log(arrayTablero);
 
     }
     
-    function juegoDos(evento) {
-        console.log(evento.target.id);
+    function juegoDos() {
         juegoOFF = false;
         div_botones.removeChild(div_botones.lastChild);
 
-        console.log(tablero);
-
         rellenarArray();
-        console.log(arrayTablero)
-        
-        //while(!acabarPartida()) {
-            for(let i = 0; i < arrayTablero.length; i++) {
-                arrayTablero[i].addEventListener('click', agregarFicha);
-            }
-        //}
-    }
+    
+        for(let i = 0; i < arrayTablero.length; i++) {
+            arrayTablero[i].addEventListener('click', agregarFicha);
+        }
+    } 
 
 
     // #### Otras Funciones ####
@@ -75,12 +70,24 @@ document.addEventListener('DOMContentLoaded', () => {
             tablero.setCasilla(evento.target.title, marca_x);    // se agrega al objeto tablero
             console.log(tablero);
             agregarHTML();   // se agrega al tablero del HTML
+
+            if(tablero.juegoGanado()) {
+                final("Jugador 1");
+            }
         }
         else {
             turno1 = true;
             tablero.setCasilla(evento.target.title, marca_o);
             console.log(tablero);
             agregarHTML();
+
+            if(tablero.juegoGanado()) {
+                final("Jugador 2");
+            }
+        }
+
+        if(tablero.completo()) {
+            final("Ningún ganador");
         }
     }
 
@@ -119,6 +126,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
+    }
+
+    function final(mensaje) {
+        const msg_final = document.createElement("p");
+        msg_final.textContent = `Ganador: ${mensaje}`;
+        msg_final.classList.add('mensaje-final');
+
+        const footer = document.querySelector('#footer');
+        footer.classList.remove('oculto');
+
+        footer.appendChild(msg_final);
     }
 });
 
