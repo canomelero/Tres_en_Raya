@@ -51,7 +51,7 @@ main .contenedor {
 
 .juego {
     width: auto;
-    height: auto;
+    height: 50vh;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -61,9 +61,10 @@ main .contenedor {
 
 #tablero {
     width: auto;
-    height: 50vh;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 125px);
+    grid-auto-rows: minmax(125px, auto);    /*Cada fila tiene un tamaño mínimo de 125px de alto*/
     gap: 8px;
 }
 
@@ -129,13 +130,19 @@ main .contenedor {
 }
 
 .marca-x {
-
-
+    color: rgb(151, 151, 240);
+    font-size: 80px;
+    font-weight: 700;
+    text-shadow: 0px 0px 6px black;
+    text-align: center;
 }
 
 .marca-o {
-
-    
+    color: red;
+    font-size: 80px;
+    font-weight: 700;
+    text-shadow: 0px 0px 6px black;
+    text-align: center;
 }
 
 

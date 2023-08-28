@@ -93,12 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const msg = document.createElement("p");
                     msg.textContent = tablero.getElemento(i, j);
 
-                    /*if(tablero.getElemento(i, j) === marca_x) {
+                    if(tablero.getElemento(i, j) === marca_x) {
                         msg.classList.add('marca-x');
                     }
                     else if(tablero.getElemento(i, j) === marca_o) {
                         msg.classList.add('marca-o');
-                    }*/
+                    }
                     
                     const casilla = tablero.getNumCasilla(i, j);
 
