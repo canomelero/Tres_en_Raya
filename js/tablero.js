@@ -42,6 +42,7 @@ export class Tablero {
     getElemento(fila, columna) {
         return this.arrayTablero[fila][columna];
     }
+
     
     /* 
     Algoritmo:
@@ -65,6 +66,7 @@ export class Tablero {
         return num_casilla;
     }
 
+
     /*
     Algoritmo:
         Se saca el elemento ('X' o 'O') de la casilla central y se comprueba que coincide con las esquinas del tablero.
@@ -86,17 +88,57 @@ export class Tablero {
         return juego_diagonal;
     }
 
-    juegoEnLinea() {
+
+    /*
+    Algoritmo:
+        Se recorre toda la matriz y se comprueba si el elemento de una casilla es el mismo que el de su casilla siguiente. Si es así, se suma una unidad a una variable contador. En el momento que el contador llegue al valor de 3 ya habrá un juego en fila
+    */
+    juegoEnFila() {
+        let contador = 1;
+        let hay_juego = false;
+
+        for(let i = 0; i < this.filas && !hay_juego; i++) {
+            for(let j = 0; j < this.col-1 && !hay_juego; j++) {
+                if(this.getElemento(i, j) === this.getElemento(i, j+1)) {
+                    contador++;
+                }
+
+                if(contador === 3) {
+                    hay_juego = true;
+                }
+            }
+
+            contador = 1;
+        }
+
+        return hay_juego;
+    }
+
+
+    /*
+    Algoritmo:
+        Se saca el elemento que hay en la fila central y que corresponde a cada columna. Después, se comprueba si coincide con el elemento que hay en su fila anterior y en su fila posterior
+    */
+    juegoEnColumna() {
+        let hay_juego = false;
+        let fila_central = 1;
         
+        for(let j = 0; j < this.col && !hay_juego; j++) {
+            let elemento = this.getElemento(fila_central, j);
 
+            if(this.getElemento(fila_central-1, j) === elemento && this.getElemento(fila_central+1, j) === elemento) {
+                hay_juego = true;
+            }
+        }  
 
+        return hay_juego;
     }
     
     juegoGanado() {
-        return this.juegoEnDiagonal() || this.juegoEnLinea();
+        return this.juegoEnDiagonal() || this.juegoEnFila() || this.juegoEnColumna();
     }
 
-    completo() {
+    tableroCompleto() {
         let tablero_completo = true;
 
         for(let i = 0; i < this.filas && tablero_completo; i++) {

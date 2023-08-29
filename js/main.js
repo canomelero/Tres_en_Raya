@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const boton1 = document.querySelector('#un_jugador');
     const boton2 = document.querySelector('#dos_jugadores');
     const div_botones = document.querySelector('.botones');
+    const tablero_html = document.querySelector('#tablero');
     const tablero = new Tablero();
     const marca_x = "X";
     const marca_o = "O";
-    let juegoOFF = true;
+    let fin = false;
+    let mensaje_inicio = true;
     let arrayTablero = [];
     let turno1 = true;
     
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     boton1.addEventListener('click', juegoUno);
     boton2.addEventListener('click', juegoDos);
     
-    if(juegoOFF) {
+    if(mensaje_inicio) {
         alerta("Debes seleccionar un modo de juego");
     }
 
@@ -39,14 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function juegoDos() {
-        juegoOFF = false;
+        mensaje_inicio = false;
         div_botones.removeChild(div_botones.lastChild);
-
+        
         rellenarArray();
-    
-        for(let i = 0; i < arrayTablero.length; i++) {
-            arrayTablero[i].addEventListener('click', agregarFicha);
-        }
+        
+        
+        tablero_html.addEventListener('click', agregarFicha); 
+        
+        
     } 
 
 
@@ -55,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const msg_alerta = document.createElement("p");
         msg_alerta.textContent = mensaje;
         msg_alerta.classList.add('alerta');
+
         div_botones.appendChild(msg_alerta);
     }
 
@@ -72,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             agregarHTML();   // se agrega al tablero del HTML
 
             if(tablero.juegoGanado()) {
-                final("Jugador 1");
+                final("Ganador: Jugador 1");
             }
         }
         else {
@@ -82,11 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
             agregarHTML();
 
             if(tablero.juegoGanado()) {
-                final("Jugador 2");
+                final("Ganador: Jugador 2");
             }
         }
 
-        if(tablero.completo()) {
+        if(tablero.tableroCompleto()) {
             final("Ningún ganador");
         }
     }
@@ -130,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function final(mensaje) {
         const msg_final = document.createElement("p");
-        msg_final.textContent = `Ganador: ${mensaje}`;
+        msg_final.textContent = mensaje;
         msg_final.classList.add('mensaje-final');
 
         const footer = document.querySelector('#footer');
