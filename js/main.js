@@ -6,10 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const boton2 = document.querySelector('#dos_jugadores');
     const div_botones = document.querySelector('.botones');
     const tablero_html = document.querySelector('#tablero');
+    const btn_inicio = document.querySelector('#inicio');
+    const btn_nueva_partida = document.querySelector('#nueva_partida');
+    const footer = document.querySelector('#footer');
     const tablero = new Tablero();
     const marca_x = "X";
     const marca_o = "O";
-    let fin = false;
+    let un_ganador = false;
     let mensaje_inicio = true;
     let arrayTablero = [];
     let turno1 = true;
@@ -46,10 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         rellenarArray();
         
-        
-        tablero_html.addEventListener('click', agregarFicha); 
-        
-        
+        tablero_html.addEventListener('click', agregarFicha);
     } 
 
 
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(tablero);
             agregarHTML();   // se agrega al tablero del HTML
 
-            if(tablero.juegoGanado()) {
+            if(tablero.juegoGanado() && !un_ganador) {
                 final("Ganador: Jugador 1");
             }
         }
@@ -85,14 +85,29 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(tablero);
             agregarHTML();
 
-            if(tablero.juegoGanado()) {
+            if(tablero.juegoGanado() && !un_ganador) {
                 final("Ganador: Jugador 2");
             }
         }
 
-        if(tablero.tableroCompleto()) {
+        if(tablero.tableroCompleto() && !un_ganador) {
             final("Ningún ganador");
         }
+
+        if(!footer.classList.contains('oculto')) {
+            btn_inicio.addEventListener('click', function() {
+                location.reload();
+            });
+
+            btn_nueva_partida.addEventListener('click', () => {
+                tablero.vaciarTablero();
+                limpiarTableroHTML();
+                footer.classList.add('oculto');
+                footer.removeChild(footer.lastChild);
+                un_ganador = false;
+                turno1 = true;
+            });
+        } 
     }
 
     function agregarHTML() {
@@ -141,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         footer.classList.remove('oculto');
 
         footer.appendChild(msg_final);
+        un_ganador = true;
     }
 });
 

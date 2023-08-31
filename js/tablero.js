@@ -10,13 +10,13 @@ export class Tablero {
         this.col = col;
         
         let num = 1;
-        this.arrayTablero = new Array();
+        this.tablero = new Array();
 
         for(let i = 0; i < filas; i++) {
-            this.arrayTablero[i] = new Array();
+            this.tablero[i] = new Array();
 
             for(let j = 0; j < col; j++) {
-                this.arrayTablero[i][j] = `${num}`;
+                this.tablero[i][j] = `${num}`;
                 num++;
             }
         }
@@ -32,15 +32,15 @@ export class Tablero {
     setCasilla(casilla, elemento) {
         for(let i = 0; i < this.filas; i++) {
             for(let j = 0; j < this.col; j++) {
-                if(this.arrayTablero[i][j] === casilla) {
-                    this.arrayTablero[i][j] = elemento;
+                if(this.tablero[i][j] === casilla) {
+                    this.tablero[i][j] = elemento;
                 }
             }
         }
     }
 
     getElemento(fila, columna) {
-        return this.arrayTablero[fila][columna];
+        return this.tablero[fila][columna];
     }
 
     
@@ -150,5 +150,16 @@ export class Tablero {
         }
 
         return tablero_completo;
+    }
+
+    vaciarTablero() {
+        let num = 1;
+
+        for(let i = 0; i < this.filas; i++) {
+            for(let j = 0; j < this.col; j++) {
+                this.tablero[i][j] = `${num}`;
+                num++;
+            }
+        }
     }
 }
